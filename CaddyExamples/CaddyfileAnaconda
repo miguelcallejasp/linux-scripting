@@ -1,0 +1,64 @@
+notebooks.kohls.vizixcloud.com
+{
+tls infrastructure@mojix.com
+log stdout
+errors stderr
+timeouts 2h
+
+proxy /tree anaconda:8888 {
+transparent
+}
+
+proxy /notebooks anaconda:8888 {
+transparent
+}
+
+proxy /static anaconda:8888 {
+transparent
+}
+
+proxy /api anaconda:8888 {
+websocket
+}
+
+proxy /nbextensions anaconda:8888 {
+transparent
+}
+
+proxy /custom anaconda:8888 {
+transparent
+}
+
+proxy /kernelspecs anaconda:8888 {
+transparent
+}
+}
+
+
+dashboards.kohls.vizixcloud.com
+{
+
+tls infrastructure@mojix.com
+log stdout
+errors stderr
+timeouts 2h
+
+proxy /dashboards dashboards:3000 {
+transparent
+}
+
+proxy /css dashboards:3000 {
+transparent
+}
+
+proxy /components dashboards:3000 {
+transparent
+}
+
+proxy /api dashboards:3000 {
+websocket
+transparent
+}
+
+}
+

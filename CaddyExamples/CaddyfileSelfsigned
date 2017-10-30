@@ -1,0 +1,33 @@
+:443
+{
+header / Strict-Transport-Security "max-age=31536000;"
+tls /root/.caddy/self/cert.pem /root/.caddy/self/key.key
+#tls self_signed
+gzip
+log stdout
+errors stderr
+timeouts 2h
+
+proxy / ui:80 {
+  transparent
+}
+
+proxy /riot-core-services services:8080 {
+  transparent
+}
+}
+
+#flow.landmark.vizixcloud.com:443
+#{
+#tls /root/.caddy/self/cert.pem /root/.caddy/self/key.key
+#tls self_signed
+#log stdout
+#errors stderr
+#proxy / flow:1880 {
+#proxy_header Host {host}
+#  proxy_header X-Real-IP {remote}
+#  proxy_header X-Forwarded-Proto {scheme}
+#  websocket
+#}
+#}
+

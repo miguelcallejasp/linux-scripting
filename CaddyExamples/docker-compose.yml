@@ -1,0 +1,10 @@
+version: '2'
+services:
+    proxy:
+        image: abiosoft/caddy:0.8.3
+        command: --conf /etc/Caddyfile -http2=false
+        volumes:
+            - ./Caddyfile:/etc/Caddyfile
+        ports:
+            - 80:80
+
