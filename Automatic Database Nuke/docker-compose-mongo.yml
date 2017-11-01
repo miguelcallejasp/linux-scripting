@@ -1,0 +1,12 @@
+version: "2.3"
+services:
+
+  mongosetup:
+    image: ${MONGO}
+    ports:
+      - 27017:27017
+    restart: always
+    #mem_reservation: 1g
+    command: --storageEngine=wiredTiger --journal --slowms=5 --profile=2 --cpu --dbpath=/data/db --directoryperdb --wiredTigerCacheSizeGB=1 --wiredTigerDirectoryForIndexes
+    volumes:
+      - ${VIZIX_DATA_PATH}/mongo:/data/db

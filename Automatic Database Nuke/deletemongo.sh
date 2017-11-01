@@ -1,7 +1,10 @@
 #!/bin/bash
 
+set -e
+VIZIX_DATA_PATH=/opt/vizix/data
+
 docker-compose stop mongo
-rm -rf data/mongo
+rm -rf ${VIZIX_DATA_PATH}/mongo
 docker-compose -f docker-compose-mongo.yml up -d
 sleep 5
 
